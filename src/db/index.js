@@ -40,7 +40,7 @@ function queryOne(sql) {
     querySql(sql).then(res => {
       console.log('res===',res)
       if (res && res.length > 0) {
-        resolve(res[0]);
+        resolve(res);
       } else {
         resolve(null);
       }

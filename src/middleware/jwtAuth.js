@@ -23,7 +23,7 @@ const jwtAuth = expressjwt({
   },
   algorithms: ["HS256"]
 }).unless({
-  path: ["/", "/api/user/login", "/api/register", "/api/resetPwd"],
+  path: ["/", "/api/user/login", "/api/user/register", "/api/resetPwd"],
 });
 
 // jwt-token解析
