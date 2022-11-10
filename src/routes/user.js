@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from "express-validator";
-import { login, register } from '../services/userSerevice.js'
+import { login, register } from '../services/userService.js'
 
 // 登录/注册校验
 const loginValidator = [
