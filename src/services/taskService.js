@@ -67,7 +67,33 @@ async function addTask(req, res, next) {
   }
 }
 
+// 删除一条数据
+async function deleteTask(req, res, next) {
+  const err = validationResult(req);
+  if (!err.isEmpty()) {
+    const [{ msg }] = err.errors;
+    next(Boom.badRequest(msg));
+  } else {
+    let { id } = req.body
+    const sql = `delete from task where id = '${id}'`
+    let delRes = await querySql(sql)
+    if(delRes.affectedRows == 0) {
+      res.json({
+        code: CODE_ERROR,
+        msg: '没有此记录',
+        data: null
+      })
+    } else {
+      res.json({
+        code: CODE_SUCCESS,
+        msg: '删除成功',
+        data: null
+      })
+    }
+  }
+}
 export {
   queryTaskList,
-  addTask
+  addTask,
+  deleteTask
 };
